@@ -5,6 +5,7 @@ import { AppRoutingModule, routeCompArr } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { parentReducer } from './state/app.reducer';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule,
     AppRoutingModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({'parent':parentReducer}),
   ],
   providers: [],
   bootstrap: [AppComponent]

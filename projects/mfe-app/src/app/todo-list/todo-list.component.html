@@ -5,3 +5,13 @@
 </ol>
 <h1>Thank you</h1>
 <a href="todo-list/test" routerLinkActive="active">Test Link</a>
+
+<div class="form-check col-md-7">
+    <label>
+      <input class="form-check-input"
+             type="checkbox"
+             (change)="checkChanged()"
+             [checked]="displayCode">
+      Display Product Code
+    </label>
+  </div>

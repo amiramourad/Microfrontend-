@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,7 @@ import { TodoListModule } from './todo-list/todo-list.module';
 import { TestModule } from './test-component/test.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { productReducer } from './state/app.reducer';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     TodoListModule,
     TestModule,
-    StoreModule.forRoot({}),
-    StoreDevtoolsModule.instrument({
-      name: 'APM Demo App DevTools',
-      maxAge: 25,
-      // logOnly: environment.production
-    })
+    StoreModule.forFeature('products', productReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+      // StoreModule.forFeature('products', productReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]
